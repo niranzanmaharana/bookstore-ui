@@ -1,6 +1,10 @@
 {
   "name": "bookstore-ui",
+  "description": "Online Bookstore Frontend application",
   "version": "0.0.0",
+  "engines": {
+    "node": "13.2.0"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

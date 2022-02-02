@@ -1,0 +1,22 @@
+<div class="row gx-3 gx-lg-5 gx-md-2 row-cols-2 row-cols-md-3 row-cols-xl-3">
+    <div *ngFor="let book of books" class="col mb-5">
+        <div class="card h-100">
+            <!-- Product image-->
+            <img class="card-img-top" [src]="book.imageUrl"/>
+            <!-- Product details-->
+            <div class="card-body p-4">
+                <!-- Product name-->
+                <h5 class="card-title">
+                    <a href="#" class="text-decoration-none">{{ book.name }}</a>
+                </h5>
+                <h6>{{ book.unitPrice | currency: 'INR'}}</h6>
+                <p class="card-text text-truncate">{{ book.description }}</p>
+            </div>
+            <!-- Product actions-->
+            <div class="card-footer bg-transparent">
+                <div class="btn btn-primary" style="float: right;">Add to Cart</div>
+                <!-- <div class="text-center"><a class="btn btn-outline-primary mt-auto float-right" href="#">Add to cart</a></div> -->
+            </div>
+        </div>
+    </div>
+</div>

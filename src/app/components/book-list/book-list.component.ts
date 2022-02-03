@@ -19,10 +19,10 @@ export class BookListComponent implements OnInit {
     private _activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this._activatedRoute.paramMap.subscribe(() => this.listBooks());
+    this._activatedRoute.paramMap.subscribe(() => this.loadBooks());
   }
 
-  listBooks() {
+  loadBooks() {
     if (this._activatedRoute.snapshot.paramMap.has('id')) {
       let id = this._activatedRoute.snapshot.paramMap.get('id');
       this.categoryId = id == null ? 1 : +id;
@@ -30,7 +30,7 @@ export class BookListComponent implements OnInit {
       this.categoryId = 1;
     }
 
-    this._service.get(this.categoryId).subscribe(
+    this._service.getBooks(this.categoryId).subscribe(
       data => {
         this.books = data;
       }

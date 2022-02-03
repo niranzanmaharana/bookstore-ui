@@ -7,12 +7,14 @@ import { BookListComponent } from './components/book-list/book-list.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
+import { BookCategoryComponent } from './components/book-category/book-category.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BookListComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    BookCategoryComponent
   ],
   imports: [
     BrowserModule,

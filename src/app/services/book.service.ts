@@ -14,12 +14,11 @@ export class BookService {
     private http: HttpClient
   ) { }
 
-  get(): Observable<Book[]> {
-    let temp: any = this.http.get<BookResponse>(this.baseUrl).pipe(
+  get(categoryId: number): Observable<Book[]> {
+    const searchUrl = `${this.baseUrl}/search/category/?id=${categoryId}`;
+    return this.http.get<BookResponse>(searchUrl).pipe(
       map(response => response._embedded.books)
     );
-    console.log(temp);
-    return temp;
   }
 }
 

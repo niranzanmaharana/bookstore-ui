@@ -40,7 +40,7 @@
     </div>
 </nav>
 <!-- Header-->
-<header class="bg-dark py-5">
+<header class="bg-dark py-5 d-none">
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
             <h1 class="display-4 fw-bolder">Shop in style</h1>
@@ -51,20 +51,7 @@
 <!-- Section-->
 <section class="py-5">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="list-group">
-                    <a href="#" class="list-group-item">Category One</a>
-                    <a href="#" class="list-group-item">Category Two</a>
-                    <a href="#" class="list-group-item">Category Three</a>
-                </div>
-            </div>
-            <div class="col-lg-9">
-                <div class="container px-4 px-lg-5">
-                    <app-book-list></app-book-list>
-                </div>
-            </div>
-        </div>
+        <router-outlet></router-outlet>
     </div>
 </section>
 <!-- Footer-->

@@ -7,5 +7,5 @@ import { Book } from './common/book';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
+
 }

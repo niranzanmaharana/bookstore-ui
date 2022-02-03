@@ -1,21 +1,37 @@
-<div class="row gx-3 gx-lg-5 gx-md-2 row-cols-2 row-cols-md-3 row-cols-xl-3">
-    <div *ngFor="let book of books" class="col mb-5">
-        <div class="card h-100">
-            <!-- Product image-->
-            <img class="card-img-top" [src]="book.imageUrl"/>
-            <!-- Product details-->
-            <div class="card-body p-4">
-                <!-- Product name-->
-                <h5 class="card-title">
-                    <a href="#" class="text-decoration-none">{{ book.name }}</a>
-                </h5>
-                <h6>{{ book.unitPrice | currency: 'INR'}}</h6>
-                <p class="card-text text-truncate">{{ book.description }}</p>
-            </div>
-            <!-- Product actions-->
-            <div class="card-footer bg-transparent">
-                <div class="btn btn-primary" style="float: right;">Add to Cart</div>
-                <!-- <div class="text-center"><a class="btn btn-outline-primary mt-auto float-right" href="#">Add to cart</a></div> -->
+<div class="row">
+    <div class="col-lg-3">
+        <div class="list-group">
+            <a routerLink="/category/1" class="list-group-item"
+                routerLinkActive="bg-primary text-white font-weight-bold">Web Development</a>
+            <a routerLink="/category/2" class="list-group-item"
+                routerLinkActive="bg-primary text-white font-weight-bold">Programing</a>
+            <a routerLink="/category/3" class="list-group-item"
+                routerLinkActive="bg-primary text-white font-weight-bold">Databases</a>
+        </div>
+    </div>
+    <div class="col-lg-9">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-3 gx-lg-5 gx-md-2 row-cols-2 row-cols-md-3 row-cols-xl-3">
+                <div *ngFor="let book of books" class="col mb-5">
+                    <div class="card h-100">
+                        <!-- Product image-->
+                        <img class="card-img-top" [src]="book.imageUrl" />
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <!-- Product name-->
+                            <h5 class="card-title">
+                                <a href="#" class="text-decoration-none">{{ book.name }}</a>
+                            </h5>
+                            <h6>{{ book.unitPrice | currency: 'INR'}}</h6>
+                            <p class="card-text text-truncate">{{ book.description }}</p>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer bg-transparent">
+                            <div class="btn btn-primary float-end">Add to Cart</div>
+                            <!-- <div class="text-center"><a class="btn btn-outline-primary mt-auto float-right" href="#">Add to cart</a></div> -->
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-lg-3">
+        <app-book-category></app-book-category>
+    </div>
+    <div class="col-lg-9">
+        <div class="row">
+            <!-- Display book image -->
+            <div class="col-12 col-md-4">
+                <div class="thumbnail">
+                    <img [src]="book.imageUrl">
+                </div>
+            </div>
+            <!-- Display book info-->
+            <div class="col-12 col-md-8">
+                <h3>{{ book.name }}</h3>
+                <hr>
+                <p>{{ book.description }}</p>
+                <h4>Price: <strong>{{ book.unitPrice | currency: 'INR' }}</strong></h4>
+                <hr>
+                <h6>Quantity Available: <strong>{{ book.unitsInStock }}</strong></h6>
+                <hr>
+                <a routerLink="/books" class="btn btn-success"><i class="fa fa-arrow-left"></i> Back</a>
+                <a class="btn btn-primary mx-1"><i class="fa fa-cart-arrow-down"></i> Add to Cart</a>
+            </div>
+        </div>
+    </div>
+</div>

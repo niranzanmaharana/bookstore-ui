@@ -6,6 +6,17 @@
     src: url(../src/assets/fonts/Roboto_Mono/RobotoMono-Regular.ttf) format('truetype');
 }
 
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
 h1 {
     font-family: 'Roboto Mono';
+}
+
+.btn:focus, 
+.form-control:focus {
+    box-shadow: none !important;
 }

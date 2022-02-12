@@ -8,13 +8,17 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { BookCategoryComponent } from './components/book-category/book-category.component';
+import { SearchComponent } from './components/search/search.component';
+import { BookInfoComponent } from './components/book-info/book-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BookListComponent,
     PageNotFoundComponent,
-    BookCategoryComponent
+    BookCategoryComponent,
+    SearchComponent,
+    BookInfoComponent
   ],
   imports: [
     BrowserModule,

@@ -5,7 +5,7 @@ import { BookService } from 'src/app/services/book.service';
 @Component({
   selector: 'app-book-category',
   templateUrl: './book-category.component.html',
-  styleUrls: ['./book-category.component.css']
+  styleUrls: ['./book-category.component.scss']
 })
 export class BookCategoryComponent implements OnInit {
   categories: BookCategory[];

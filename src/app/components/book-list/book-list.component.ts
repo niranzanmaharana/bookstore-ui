@@ -8,7 +8,7 @@ import { NgbPagination, NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap';
   selector: 'app-book-list',
   // templateUrl: './book-list.component.html',
   templateUrl: './book-grid.component.html',
-  styleUrls: ['./book-list.component.css']
+  styleUrls: ['./book-list.component.scss']
 })
 export class BookListComponent implements OnInit {
   books: Book[] = [];
@@ -18,7 +18,7 @@ export class BookListComponent implements OnInit {
 
   // new properties for service side pagination
   currentPage: number = 1;
-  pageSize: number = 1;
+  pageSize: number = 5;
   totalRecords: number = 0;
 
   constructor(

@@ -1,0 +1,39 @@
+.card-title {
+    font-size: 0.8rem;
+}
+
+.card-text {
+    font-size: 0.8rem;
+}
+
+.card-title a {
+    text-decoration: none;
+}
+
+.card-title a:hover {
+    text-decoration: underline;
+}
+
+.book-container:hover {
+    box-shadow: 0 0.3rem 1.525rem -0.375rem rgb(0 0 0 / 10%);
+    z-index: 10;
+}
+
+.book-container .card {
+    border: none;
+}
+
+.card-footer {
+    border: none;
+}
+
+.btn-add-to-cart {
+    color: #fff !important;
+    background-color: #fe696a;
+    border-color: #fe696a;
+}
+
+.btn-add-to-cart:hover {
+    border-color: #fe3638;
+    background-color: #fe3638;
+}

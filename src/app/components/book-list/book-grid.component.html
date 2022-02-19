@@ -1,11 +1,12 @@
 <div class="row">
-    <div class="col-lg-3">
+    <div class="col-lg-2">
         <app-book-category></app-book-category>
     </div>
-    <div class="col-lg-9">
+    <div class="col-lg-10">
         <div class="container px-4 px-lg-5">
-            <div class="row gx-3 gx-lg-5 gx-md-2 row-cols-2 row-cols-md-3 row-cols-xl-3">
-                <div *ngFor="let book of books" class="col mb-5">
+            <div class="row book-list-container"> 
+                <!-- gx-3 gx-lg-5 gx-md-2 row-cols-2 row-cols-md-3 row-cols-xl-3"> -->
+                <div *ngFor="let book of books" class="book-container mt-lg-0 mt-sm-5 col-xl-3 col-lg-4 col-md-4 col-sm-6 col-xs-12 mb-5">
                     <div class="card h-100">
                         <!-- Product image-->
                         <a routerLink="/books/{{ book.id }}">
@@ -15,14 +16,16 @@
                         <div class="card-body p-4">
                             <!-- Product name-->
                             <h5 class="card-title">
-                                <a class="text-decoration-none" routerLink="/books/{{ book.id }}">{{ book.name }}</a>
+                                <a routerLink="/books/{{ book.id }}">{{ book.name }}</a>
                             </h5>
                             <h6>{{ book.unitPrice | currency: 'INR'}}</h6>
                             <p class="card-text text-truncate">{{ book.description }}</p>
                         </div>
                         <!-- Product actions-->
                         <div class="card-footer bg-transparent">
-                            <div class="btn btn-primary float-end">Add to Cart</div>
+                            <button class="btn btn-add-to-cart btn-sm d-block w-100 mb-2"> 
+                                <i class="fa-solid fa-cart-plus"></i>
+                                Add to Cart</button>
                             <!-- <div class="text-center"><a class="btn btn-outline-primary mt-auto float-right" href="#">Add to cart</a></div> -->
                         </div>
                     </div>
@@ -31,6 +34,34 @@
             <div *ngIf="this.books.length == 0">
                 <div class="col-md-12 alert alert-warning">
                     No records found!
+                </div>
+            </div>
+            <div class="row">
+                <!-- Handle page size -->
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="mr-2">Page Size</div>
+                        </div>
+                        <div class="col-md-9">
+                            <select (change)="onPageSizeChange($event)">
+                                <option value="5" selected>5</option>
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="50">50</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <!-- Pagination -->
+                    <ngb-pagination class="d-flex justify-content-end" 
+                                    [(page)]="currentPage" 
+                                    [pageSize]="pageSize" 
+                                    [collectionSize]="totalRecords" 
+                                    [rotate]="true" 
+                                    [boundaryLinks]="true"
+                                    (pageChange)="loadBooks()"></ngb-pagination>
                 </div>
             </div>
         </div>

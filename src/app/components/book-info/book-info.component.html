@@ -20,7 +20,7 @@
                 <h6>Quantity Available: <strong>{{ book.unitsInStock }}</strong></h6>
                 <hr>
                 <a routerLink="/books" class="btn btn-success"><i class="fa fa-arrow-left"></i> Back</a>
-                <a class="btn btn-primary mx-1"><i class="fa fa-cart-arrow-down"></i> Add to Cart</a>
+                <a class="btn btn-primary mx-1" (click)="addToCart()"><i class="fa fa-cart-arrow-down"></i> Add to Cart</a>
             </div>
         </div>
     </div>

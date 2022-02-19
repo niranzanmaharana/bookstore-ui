@@ -3,6 +3,9 @@ import { Book } from 'src/app/common/book';
 import { BookService } from 'src/app/services/book.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgbPagination, NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap';
+import { CartItem } from 'src/app/common/cart-item';
+import { CartService } from 'src/app/services/cart.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-book-list',
@@ -24,7 +27,9 @@ export class BookListComponent implements OnInit {
   constructor(
     private _service: BookService,
     private _activatedRoute: ActivatedRoute,
-    private _config: NgbPaginationConfig
+    private _config: NgbPaginationConfig,
+    private _cartService: CartService,
+    private _ngxSpinnerService: NgxSpinnerService
   ) {
     _config.maxSize = 3;
   }
@@ -34,6 +39,8 @@ export class BookListComponent implements OnInit {
   }
 
   loadBooks() {
+    // Start the spinner
+    this._ngxSpinnerService.show();
     this.searchMode = this._activatedRoute.snapshot.paramMap.has('keyword');
     /**
      * If user is searching for books with some keyword then use search method,
@@ -67,10 +74,11 @@ export class BookListComponent implements OnInit {
                           this.currentPage - 1, 
                           this.pageSize).subscribe(
                             data => {
-                            this.books = data._embedded.books;
-                            this.currentPage = data.page.number + 1,
-                            this.totalRecords = data.page.totalElements,
-                            this.pageSize = data.page.size
+                              this._ngxSpinnerService.hide();
+                              this.books = data._embedded.books;
+                              this.currentPage = data.page.number + 1,
+                              this.totalRecords = data.page.totalElements,
+                              this.pageSize = data.page.size
                           });
   }
 
@@ -80,6 +88,8 @@ export class BookListComponent implements OnInit {
                               this.currentPage - 1, 
                               this.pageSize).subscribe(
                               data => {
+                                // Stop the spinner
+                                this._ngxSpinnerService.hide();
                                 this.books = data._embedded.books;
                                 this.currentPage = data.page.number + 1,
                                 this.totalRecords = data.page.totalElements,
@@ -91,5 +101,10 @@ export class BookListComponent implements OnInit {
   onPageSizeChange(event: Event) {
     this.pageSize = +(event.target as HTMLSelectElement).value;
     this.loadBooks();
+  }
+
+  onAddToCartClick(book: Book) {
+    const cartItem: CartItem = new CartItem(book);
+    this._cartService.addToCart(cartItem);
   }
 }

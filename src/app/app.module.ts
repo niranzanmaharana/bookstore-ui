@@ -12,6 +12,8 @@ import { BookCategoryComponent } from './components/book-category/book-category.
 import { SearchComponent } from './components/search/search.component';
 import { BookInfoComponent } from './components/book-info/book-info.component';
 import { CartStatusComponent } from './components/cart-status/cart-status.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { CartStatusComponent } from './components/cart-status/cart-status.compon
     HttpClientModule,
     RouterModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

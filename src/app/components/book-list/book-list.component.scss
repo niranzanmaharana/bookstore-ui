@@ -1,26 +1,26 @@
 .card-title {
     font-size: 0.8rem;
+    a {
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+    }    
 }
 
 .card-text {
     font-size: 0.8rem;
 }
 
-.card-title a {
-    text-decoration: none;
-}
-
-.card-title a:hover {
-    text-decoration: underline;
+.book-container {
+    .card {
+        border: none;
+    }
 }
 
 .book-container:hover {
     box-shadow: 0 0.3rem 1.525rem -0.375rem rgb(0 0 0 / 10%);
     z-index: 10;
-}
-
-.book-container .card {
-    border: none;
 }
 
 .card-footer {

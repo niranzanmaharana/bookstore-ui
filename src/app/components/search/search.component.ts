@@ -16,7 +16,6 @@ export class SearchComponent implements OnInit {
   }
 
   search(keyword: string) {
-    console.log("keyword:: " + keyword);
     this._router.navigateByUrl('/search/' + keyword);
   }
 

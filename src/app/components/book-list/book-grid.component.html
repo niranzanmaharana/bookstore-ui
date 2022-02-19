@@ -1,3 +1,10 @@
+<ngx-spinner
+    bdColor="rgba(51,51,51,0.8)"
+    size="medium"
+    color="#fff"
+    type="ball-scale-multiple">
+    <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
 <div class="row">
     <div class="col-lg-2">
         <app-book-category></app-book-category>
@@ -23,7 +30,8 @@
                         </div>
                         <!-- Product actions-->
                         <div class="card-footer bg-transparent">
-                            <button class="btn btn-add-to-cart btn-sm d-block w-100 mb-2"> 
+                            <button class="btn btn-add-to-cart btn-sm d-block w-100 mb-2"
+                                (click)="onAddToCartClick(book)"> 
                                 <i class="fa-solid fa-cart-plus"></i>
                                 Add to Cart</button>
                             <!-- <div class="text-center"><a class="btn btn-outline-primary mt-auto float-right" href="#">Add to cart</a></div> -->
@@ -31,37 +39,39 @@
                     </div>
                 </div>
             </div>
-            <div *ngIf="this.books.length == 0">
+            <div *ngIf="!this.books && this.books.length == 0">
                 <div class="col-md-12 alert alert-warning">
                     No records found!
                 </div>
             </div>
-            <div class="row">
-                <!-- Handle page size -->
-                <div class="col-md-6">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="mr-2">Page Size</div>
-                        </div>
-                        <div class="col-md-9">
-                            <select (change)="onPageSizeChange($event)">
-                                <option value="5" selected>5</option>
-                                <option value="10">10</option>
-                                <option value="20">20</option>
-                                <option value="50">50</option>
-                            </select>
+            <div class="book-pagination" *ngIf="this.books?.length > 0">
+                <div class="row">
+                    <!-- Handle page size -->
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="mr-2">Page Size</div>
+                            </div>
+                            <div class="col-md-9">
+                                <select (change)="onPageSizeChange($event)">
+                                    <option value="5" selected>5</option>
+                                    <option value="10">10</option>
+                                    <option value="20">20</option>
+                                    <option value="50">50</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <!-- Pagination -->
-                    <ngb-pagination class="d-flex justify-content-end" 
-                                    [(page)]="currentPage" 
-                                    [pageSize]="pageSize" 
-                                    [collectionSize]="totalRecords" 
-                                    [rotate]="true" 
-                                    [boundaryLinks]="true"
-                                    (pageChange)="loadBooks()"></ngb-pagination>
+                    <div class="col-md-6">
+                        <!-- Pagination -->
+                        <ngb-pagination class="d-flex justify-content-end" 
+                                        [(page)]="currentPage" 
+                                        [pageSize]="pageSize" 
+                                        [collectionSize]="totalRecords" 
+                                        [rotate]="true" 
+                                        [boundaryLinks]="true"
+                                        (pageChange)="loadBooks()"></ngb-pagination>
+                    </div>
                 </div>
             </div>
         </div>

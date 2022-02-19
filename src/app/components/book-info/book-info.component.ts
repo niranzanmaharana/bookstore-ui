@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Book } from 'src/app/common/book';
+import { CartItem } from 'src/app/common/cart-item';
 import { BookService } from 'src/app/services/book.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-book-info',
@@ -13,7 +16,8 @@ export class BookInfoComponent implements OnInit {
 
   constructor(
     private _activatedRoute: ActivatedRoute,
-    private _service: BookService
+    private _service: BookService,
+    private _cartService: CartService
   ) { }
 
   ngOnInit(): void {
@@ -27,6 +31,11 @@ export class BookInfoComponent implements OnInit {
         this.book = data;
       }
     );
+  }
+
+  addToCart() {
+    const cartItem: CartItem = new CartItem(this.book);
+    this._cartService.addToCart(cartItem);
   }
 
 }

@@ -25,7 +25,25 @@
                                 <td>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <p>Quantity: {{ cartItem.quantity }}</p>
+                                            <p>
+                                                Quantity 
+                                                <a class="btn btn-link btn-sm float-right" (click)="remove(cartItem)">
+                                                    <i class="text-danger fa fa-trash-alt"></i>
+                                                </a>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <button (click)="incrementQuantity(cartItem)" class="btn btn-primary btn-sm float-left">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                        </div>
+                                        <div class="col-md-4 text-center">
+                                            <p>{{ cartItem.quantity }}</p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <button (click)="decrementQuantity(cartItem)" class="btn btn-primary btn-sm float-right">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
                                         </div>
                                         <div class="col-md-12 mt-2">
                                             <p> Sub Total: {{ (cartItem.quantity * cartItem.unitPrice) | currency: 'INR' }} </p>

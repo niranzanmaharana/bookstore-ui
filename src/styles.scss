@@ -1,12 +1,18 @@
+@import url(../node_modules/ngx-spinner/animations/timer.css);
+
 @font-face {
-    font-family: 'Roboto Mono';
-    src: url(../src/assets/fonts/Roboto_Mono/RobotoMono-Regular.ttf) format('truetype');
+    font-family: "Roboto Mono";
+    src: url(../src/assets/fonts/Roboto_Mono/RobotoMono-Regular.ttf) format("truetype");
 }
 
-footer {
-    /* position: fixed; */
+.footer {
+    position: fixed;
+    left: 0;
     bottom: 0;
     width: 100%;
+    color: white;
+    text-align: center;
+    z-index: 10;
 }
 
 /* jw-pagination .page-link {
@@ -17,10 +23,10 @@ footer {
 } */
 
 h1 {
-    font-family: 'Roboto Mono';
+    font-family: "Roboto Mono";
 }
 
-.btn:focus, 
+.btn:focus,
 .form-control:focus {
     box-shadow: none !important;
 }

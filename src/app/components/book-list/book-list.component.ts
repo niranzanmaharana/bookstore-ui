@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from 'src/app/common/book';
 import { BookService } from 'src/app/services/book.service';
 import { ActivatedRoute } from '@angular/router';
-import { NgbPagination, NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap';
 import { CartItem } from 'src/app/common/cart-item';
 import { CartService } from 'src/app/services/cart.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { BookResponse } from 'src/app/common/interface/book-response';
 
 @Component({
   selector: 'app-book-list',
@@ -29,7 +30,7 @@ export class BookListComponent implements OnInit {
     private _activatedRoute: ActivatedRoute,
     private _config: NgbPaginationConfig,
     private _cartService: CartService,
-    private _ngxSpinnerService: NgxSpinnerService
+    private _spinner: NgxSpinnerService
   ) {
     _config.maxSize = 3;
   }
@@ -40,7 +41,7 @@ export class BookListComponent implements OnInit {
 
   loadBooks() {
     // Start the spinner
-    this._ngxSpinnerService.show();
+    this._spinner.show();
     this.searchMode = this._activatedRoute.snapshot.paramMap.has('keyword');
     /**
      * If user is searching for books with some keyword then use search method,
@@ -74,12 +75,18 @@ export class BookListComponent implements OnInit {
                           this.currentPage - 1, 
                           this.pageSize).subscribe(
                             data => {
-                              this._ngxSpinnerService.hide();
-                              this.books = data._embedded.books;
-                              this.currentPage = data.page.number + 1,
-                              this.totalRecords = data.page.totalElements,
-                              this.pageSize = data.page.size
+                              this.processPagination(data);
                           });
+  }
+
+  processPagination(data: BookResponse) {
+    setTimeout(() => {
+      this._spinner.hide();
+      this.books = data._embedded.books;
+      this.currentPage = data.page.number + 1,
+      this.totalRecords = data.page.totalElements,
+      this.pageSize = data.page.size;
+    }, 1000);
   }
 
   handleSearchBooks() {
@@ -88,12 +95,7 @@ export class BookListComponent implements OnInit {
                               this.currentPage - 1, 
                               this.pageSize).subscribe(
                               data => {
-                                // Stop the spinner
-                                this._ngxSpinnerService.hide();
-                                this.books = data._embedded.books;
-                                this.currentPage = data.page.number + 1,
-                                this.totalRecords = data.page.totalElements,
-                                this.pageSize = data.page.size
+                                this.processPagination(data);
                               }
     );
   }

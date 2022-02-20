@@ -1,6 +1,6 @@
-import { Book } from "../common/book";
+import { Book } from "../book";
 
-interface BookResponse {
+export interface BookResponse {
     _embedded: {
         books: Book[];
     },

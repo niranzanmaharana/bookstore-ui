@@ -4,6 +4,8 @@ import { map } from 'rxjs/operators';
 import { Observable } from "rxjs";
 import { Book } from '../common/book';
 import { BookCategory } from '../common/book-category';
+import { BookResponse } from '../common/interface/book-response';
+import { BookCategoryResponse } from '../common/interface/book-category-response';
 
 @Injectable({
   providedIn: 'root'
@@ -43,27 +45,5 @@ export class BookService {
 
   private getBookList(searchUrl: string): Observable<BookResponse> {
     return this.http.get<BookResponse>(searchUrl);
-  }
-}
-
-interface BookResponse {
-  _embedded: {
-    books: Book[];
-  },
-  page: {
-    // number of records in each page
-    size: number,
-    // total number of records in the database
-    totalElements: number,
-    // total no of pages starts from index 0
-    totalPages: number,
-    // current page
-    number: number
-  }
-}
-
-interface BookCategoryResponse {
-  _embedded: {
-    bookCategory: BookCategory[];
   }
 }

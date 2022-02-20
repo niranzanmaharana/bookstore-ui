@@ -14,6 +14,7 @@ import { BookInfoComponent } from './components/book-info/book-info.component';
 import { CartStatusComponent } from './components/cart-status/cart-status.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { CartDetailComponent } from './components/cart-detail/cart-detail.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     BookCategoryComponent,
     SearchComponent,
     BookInfoComponent,
-    CartStatusComponent
+    CartStatusComponent,
+    CartDetailComponent
   ],
   imports: [
     BrowserModule,
